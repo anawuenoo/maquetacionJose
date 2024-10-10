@@ -5,6 +5,7 @@
     font-family: sans-serif,Arial, Helvetica;
 }
 .container{
+    
     width: 100%;
     height: auto;
     margin: 0px auto;
@@ -15,14 +16,17 @@
 }
 .container__header{
     /* Añadir aquí Flex y Align y/o justify */
-
-
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    align-items: center;
     height: 120px;
     border-bottom: 1px solid rgba(226,225,226, 0.8);    
 }
 
 .container__logo{
-    /* Añadir aquí Flex */
+    /* Añadir aquí Grid */
+    display: grid;
+    
     
     padding: 10px;
     margin-left: 20px;
@@ -30,8 +34,7 @@
     text-shadow: 1px 1px 0px gray;
     text-transform: uppercase;
 }
-/* flex-grow: 0  --> valor por defecto y así cada caja ocupa el espacio que toque. */
-/* flex-grow: 1  --> cada elemento ocupa el mismo espacio del tamaño disponible. */
+
 .container__logo h1{
     font-family: Helvetica, Arial, sans-serif;
     font-style: italic;
@@ -41,14 +44,15 @@
 
 .header__menu{
     /* Añadir aquí Flex */
-
-
+    /* grid-column: 3/4; */
+    
     height: 100%;
 }
 .menu__list{
     /* Añadir aquí Flex y Align y/o justify */
-
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
     height: 100%;
     list-style: none;
 }
@@ -71,14 +75,15 @@
 /* contenido */
 .content{
     /* Añadir aquí Flex y Align y/o justify */
-
-
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .content__projects{
     /* Añadir aquí Flex y Align y/o justify */
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
 }
 .projects__project{
@@ -166,16 +171,18 @@
 /* Footer */
 .content__footer{
     /* Añadir aquí Flex y Align y/o justify */
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items:center;
 
     height: 120px;
     border-top: 1px solid rgba(226,225,226, 0.8);
 }
 .footer__logoFooter{
     /* Añadir aquí Flex y order */
-
-
+    order:2;
     padding: 10px;
+    
     margin-left: 20px;
     font-family: Helvetica, Arial,  sans-serif;
     font-style: italic;
