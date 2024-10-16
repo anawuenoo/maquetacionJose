@@ -15,43 +15,43 @@
 }
 
 .container__header{
-    display: flex; /* con esto se pone un elemento al lado del otro. Similar a Float: left */
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+    /* grid-template-columns: 70% 20%; */
     align-items: center;
+    width: 100%;
     height: 120px;
     border-bottom: 1px solid rgba(226,225,226, 0.8);
 }
-.header__logo{
-    flex-grow: 1;
-    flex-basis: 60%; /* de ancho */
+.container__logo{
     padding: 10px; /* margen interior. Separa */
     margin-left: 20px; /* separamos de la izq */
     color: black;
     text-shadow: 1px 1px 0px gray;
     text-transform: uppercase;
 }
-.header__logo h1{
+.container__logo h1{
     font-family: Helvetica, Arial, sans-serif;
     font-style: italic;
     font-weight: 900; /* texto gordito */
     font-size: 35px;
 }
-.header__menu{
-    flex-grow: 1;
-    flex-basis: 35%; /* de ancho */
+.container__menu{
     height: 100%; /* que ocupe toda la altura */
+    padding-right: 20px;
 }
 .menu__list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(6, 1fr); /* dejo espacio para que se alinee el menú con los proyectos */
+    /* con los 3 sig. centro todo */
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: center;
+    text-align: center; */
     height: 100%;
     list-style: none; /* quito los puntitos de la lista */
 }
-.menu__list a{
+.menu__item a{
     text-transform: uppercase;
     color: gray;
     font-weight: bold;
@@ -63,35 +63,35 @@
     -ms-transition: all 500ms;
     -o-transition: all 500ms;
 }
-.menu__list a:hover{
+.menu__item a:hover{
     background-color: #ccc;
     color: white;
 }
 
 /* contenido */
 .container__content{
-    display: flex; /* aside en un lateral - izq y contenido en el otro -drcha */
-    justify-content: space-between; /* meto espacio entre ambos. Puedro regularlo con flex grow o flex basis */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 20% 1fr; /* barra lateral y proyectos */
+    align-items: start;
+    justify-content: space-between;
+    grid-column-gap: 7px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .content__projects{
-    display: flex; /* coloca los proyectos uno al lado del otro debo meterle el flex rox y wrap */
-    flex-flow: row wrap;
-    justify-content: space-between;
-    flex-basis: 80%; /* projects ya es un elemento de un flexbox que lo contiene y a su vez es un contenedor de flexbox para otros elementos que tiene dentro 
-    y de ahí  que pueda utilizar flex-basis */
-/*    margin-right: 20px; alineamos con el menú
-    lo eliminamos cuando le incluimos el margin a .project */
+    display: grid;
+    /* auto-fill incluye el contenido acorde al tamaño definido para cada proyecto */
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+    align-items: start;
 }
 .projects__project{
-    flex-grow: 1; /* para que se ajuste conforme sea necesario */
-    flex-basis: 250px; /* tamaño mínimo de cada caja */
     margin-bottom: 25px;
     margin-right: 20px;
     border: 1px solid #ccc;
 }
-.project__image-wrap img{
+.projects__project img{
     width: 100%;
 }
 .project__project-info{
@@ -121,12 +121,8 @@
 
 /* barra lateral */
 .content__lateral{
-    flex-basis: 15%;
     margin-right: 30px;
     padding: 15px;
-    display: flex;
-    flex-direction: column; /* un elemento debajo de otro */
-    flex-wrap: wrap;
 }
 .lateral__title{
     display: block;
@@ -142,10 +138,10 @@
 .lateral__list{
     list-style: none;
 }
-.lateral__item{
+.list__item{
     padding-bottom: 10px;
 }
-.lateral__item a{
+.list__item a{
     display: block;
     /*para poder manipularlos como quiera*/
     padding: 20px;
@@ -154,32 +150,21 @@
     text-align: center;
     text-transform: uppercase;
     transition: all 1s;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
 }
-.lateral__item a:hover{
+.list__item a:hover{
     background-color: #444;
     color: white;
     border-radius: 10%;
-    -webkit-border-radius: 10%;
-    -moz-border-radius: 10%;
-    -ms-border-radius: 10%;
-    -o-border-radius: 10%;
 }
 /* Footer */
 .container__footer{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 6fr 1fr;
     height: 120px;
     align-items: center;
     border-top: 1px solid rgba(226,225,226, 0.8);
 }
 .footer__logoFooter{
-    flex-grow: 1;
-    flex-basis: 60%; /* de ancho */
     padding: 10px; /* margen interior. Separa */
     margin-left: 20px; /* separamos de la izq */
     font-family: Helvetica, Arial, sans-serif;
@@ -192,35 +177,59 @@
 }
 
 .footer__logoFooter{
-    opacity: 0.6;
-    flex-basis: auto;
-    flex-grow: 1;
     order: 2;
-    text-align: right;
+    opacity: 0.6;
+    text-align: left;
     margin-right: 20px;
 }
 .footer__info{
-    flex-grow: 1;
-    order: 1; /* altero el orden */
+    order: 1;
     opacity: 0.8;
     margin-left: 20px;
 }
 
 /* Responsivo */
-@media (max-width: 1390px){
-
+@media (max-width: 950px){
+ /* body{
+    background-color: aquamarine;
+}  */
+.content__projects{
+    display: grid;
+    /* auto-fill incluye el contenido acorde al tamaño definido para cada proyecto */
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+   
 }
-@media (max-width: 1250px){
-
 }
-@media (max-width: 1200px){
+/*vista movil*/
+@media (max-width: 780px){
+     /* body{
+        background-color:aqua;
+    }  */
+    .container__header{
+        display: grid;
+        grid-template-columns: 1fr ;
+        align-items: center;
+        width: 100%;
+        height: 120px;
+        border-bottom: 1px solid rgba(226,225,226, 0.8);
+    }
+    .container__logo{
+        text-align: center;
+    }
 
-}
-
-@media (max-width: 800px){
-
-}
-/* Vista móvil */
-@media (max-width: 625px){
-
+    .menu__list{
+        text-align: center;
+    }
+    .container__content{
+        display: grid;
+        grid-template-columns: 1fr; 
+        margin-left: 20px;
+       
+    }
+    .lateral__list{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 10px;
+    }
 }
