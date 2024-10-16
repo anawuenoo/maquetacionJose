@@ -1,0 +1,137 @@
+/* Iniciamos estilos personalizados  */
+/* Definición Variables
+ definimos familia de fuente que voy a utilizar */
+:root{
+    --mx-width: 1320px;
+}
+
+/* Estilos Generales */
+html{
+    /* para un tema de accesibilidad y poder trabajar con rem */
+    /* font-size: 10px; */
+    /* Accesibilidad,... si el usuario nos cambia el tamaño de fuente */
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    font-size: 1.6rem; /* serán 16px porque he asignado font-size a 10px */
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400; /* grosor de la fuente, +/- tamaño normal */
+    line-height: 1.5;
+    color: var(--color-text-body);
+}
+
+/* Estructura */
+.layout{
+
+}
+
+/* Estilos menú navegación */
+.layout__menu{
+    width: 100%;
+    padding: 3.5rem 3rem; /* padding superior y lateral */
+}
+
+
+/* Estilos para el Banner */
+.layout__banner{
+
+}
+.banner__content{
+
+}
+
+
+/* Estilos sección Servicios */
+.layout__services{
+
+}
+.services__container{
+
+}
+
+
+/* Estilos para la sección de Proyectos */
+.layout__projects{
+
+}
+.projects__container{
+
+}
+
+/* Estilos para estadísticas y Mejores clientes */
+.layout__stats,
+.layout__clients{
+
+}
+.stats__container,
+.clients__container{
+
+}
+
+
+/* Estilos para Reseñas */
+.layout__reviews{
+}
+.reviews__container{
+
+}
+
+/* Estilos zona Mejores Clientes */
+.layout__clients{
+
+}
+
+/* Estilos últimas noticias */
+.layout__news{
+
+}
+.news__container{
+
+}
+
+/* Estilos para la sección de Contacto */
+.layout__contact{
+
+}
+
+/* Estilos del Pié de Página */
+.layout__footer{
+
+}
+.footer__container{
+
+}
+
+/* RESPONSIVE - oculto el menú y botón para el responsivo */
+.navbar__mobile-btn{
+    display: none;
+}
+.menu-mobile{
+
+}
+.menu-mobile--show{
+
+}
+/* Barra de navegación Responsive */
+.mobile-btn__wrap{
+
+}
+
+/* Estilos botón modo oscuro */
+.switcher{
+
+}
+.switcher__btn{
+
+}
+.switcher__icon-light,
+.switcher__icon-dark{
+
+}
+.switcher__icon-dark{
+    display: none;
+}
