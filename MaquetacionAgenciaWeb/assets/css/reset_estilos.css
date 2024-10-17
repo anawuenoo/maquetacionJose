@@ -42,6 +42,4 @@ form, input, select, textarea, button, label{
     font-size: inherit;
     color: inherit;
 } 
-/* hacemos que lo hereden para que no se apliquen estilos propios de cada elemento 
-y hereden los disponibles en el padre. */
 /* fin de reseteo de estilos */

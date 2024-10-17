@@ -52,16 +52,15 @@
     list-style: none; /* quito los puntitos de la lista */
 }
 .menu__list a{
+    display: flex;
+    
     text-transform: uppercase;
     color: gray;
     font-weight: bold;
     letter-spacing: 1px; 
     padding: 15px;
     transition: all 500ms;
-    -webkit-transition: all 500ms;
-    -moz-transition: all 500ms;
-    -ms-transition: all 500ms;
-    -o-transition: all 500ms;
+   
 }
 .menu__list a:hover{
     background-color: #ccc;
@@ -129,7 +128,7 @@
     flex-wrap: wrap;
 }
 .lateral__title{
-    display: block;
+    display: flex;
     width: 100%;
     font-size: 18px;
     font-weight: 100;
@@ -218,9 +217,32 @@
 }
 
 @media (max-width: 800px){
+   
 
+    
 }
 /* Vista móvil */
 @media (max-width: 625px){
+    .container__header{
+        display: block;
+   
+        
+    }
+    .header__menu{
+     display: block;
+      
+    }
+    .lateral__list{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 15px;
+        font-size: 16px;
+    }
+    .content__projects{
+        display: block;
 
+    }
 }
