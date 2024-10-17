@@ -54,6 +54,11 @@ No es necesario flotar los elementos (ni con float, flex, grid, grid-areas */
 }
 .menu__navbar{
     /* Flex + aling/justify */
+    display: grid;
+    grid-template-columns: 1fr 0fr 0fr;
+    align-items: center;
+    width: 100%;
+
 
 }
 
@@ -62,10 +67,13 @@ No es necesario flotar los elementos (ni con float, flex, grid, grid-areas */
 }
 .nav__list{
     /* Flex + aling/justify */
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+
 }
 .nav__item{
     /* position */
-
+    display: grid;
     margin: 0 2.4rem;
 }
 .nav__title{
