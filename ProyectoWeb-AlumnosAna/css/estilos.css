@@ -29,18 +29,19 @@
  definimos familia de fuente que voy a utilizar */
 :root{
     --mx-width: 1240px;
-    --color-primary: #7EEEFB;
+    /* --color-primary: #f7d954; */
+    --color-primary: #ad8d5d;
     --color-secondary: #fff;
     --color-backgroung: #ccc;
     --color-bg: black;
     --color-text-white: white;
-    --color-text-title: #00538c;
+    --color-text-title:rgb(0, 0, 0);
     --color-grey: gray;
     --color-box-shadow: #ddd;
     --color-box-shadow2: #393d3f;
     --color-focus: #555;
-    --color-tercero:#9ff2fc;
-    --color-fondo:#e4f9fc;
+    --color-tercero:#f3d294;
+    --color-fondo:rgb(233,201,160);
 }
 
 /* Estilos Generales */
@@ -74,7 +75,10 @@ body{
     color: var(--color-bg);
 }
 
+
 .header__logo{
+    /* display: grid; */
+    /* grid-template-columns: 2fr 1fr 1fr; */
     float: left;
     width: 200px;
     height: 50px;
@@ -86,18 +90,25 @@ body{
     cursor: pointer;
     overflow: hidden;
     /* transición */
+    transition: all 500ms;
 }
 
 .header__logo h3{
-    display: block;
-    float: right;
+    display: grid;
     font-size: 40px;
     margin-right: 65px;
     /* transición */
 }
 
 /* efecto con keyframes - hover en el Logo */
-
+.header__logo:hover h3{
+    animation: mueveDerecha 2s;
+}
+@keyframes mueveDerecha {
+    from{
+        transform: translateX(200%);
+    }
+}
 
 /* efecto hover en Logo */
 
@@ -185,7 +196,7 @@ body{
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 20px; 
+    border-radius: 15px; 
     background-color: var( --color-tercero);
     /* transicion */
 
@@ -196,15 +207,12 @@ body{
     box-shadow: 4px 4px 10px var(--color-box-shadow); 
 }
 
-
-
-
 .cards__card:last-child{
     margin-right: 0px;
 }
 
 .cards__card .card__icon{
-    display: block;
+    display: grid;
     width: 100%;
     height: 110px;
     font-size: 50px;
@@ -237,7 +245,78 @@ body{
 }
 /* efecto de hover en la carta. tocamos card__description */
 
+/*NUEVO*/
 
+/* .content__cards1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center; 
+    padding: 20px;
+}
+/* Tarjetas *//*
+.cards__card1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 200px;
+    height: 220px;
+    border: 1px solid var(--color-background);
+    box-shadow: 1px 1px 4px var(--color-box-shadow);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 20px; 
+    background-color: var( --color-tercero);
+    /* transicion */
+/*
+}*/
+/*efecto hover en las cartas *//*
+.cards__card1:hover {
+    transform: scale(1.05); 
+    box-shadow: 4px 4px 10px var(--color-box-shadow); 
+}
+
+.cards__card1:last-child{
+    margin-right: 0px;
+}
+
+.cards__card1 .card__icon1{
+    display: ;
+    width: 100%;
+    height: 110px;
+    font-size: 50px;
+    line-height: 90px;
+    text-align: center;
+    margin: 0px auto;
+} */
+/*efecto hover en la carta modificamos card__icon */
+
+/* keyframes */
+
+.card__category1{
+    width: 100%;
+    height: 50px;
+    font-family: "TrebuchetMS";
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-text-title);
+    transition: all 500ms;
+}
+/*efecto hover en la carta - modificamos card_category */
+
+.card__description1{
+    font-family: "TrebuchetMS";
+    text-align: center;
+    color: var(--color-text-title);
+    font-size: 14px;
+    /* transición */
+}
+/* efecto de hover en la carta. tocamos card__description */
+
+
+
+/*FIN DEL NUEVO*/
 .clearfix{
     float: none;
     clear: both;
@@ -360,8 +439,8 @@ body{
     margin-top: 20px;
     color: var(--color-text-white);
     /* Degradado desde abajo - to bottom --> hacia arriba */
-    background: linear-gradient(to bottom, #7EEEFB 0%, #66a6ad 100%);
-    border: 1px solid #87dcfc;
+    background: linear-gradient(to bottom, #c5b16d 0%, #d8b541 100%);
+    border: 1px solid #daba54;
     border-radius: 0px;
     cursor: pointer;
     font-size: 15px;
@@ -417,12 +496,18 @@ body{
     margin-left: 70px;
     margin-top: -52px;
     cursor: pointer;
-    transform: translateX(-80%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
+    transform: translateX(-120%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
     opacity: 0; /*lo oculto*/
     /* transición el cambio */
+    transition: all 1s;
 
 }
 /* efecto hover sobre el div de lateral__social */
+.lateral__social div:hover .social__overlay{
+    transform: translateX(0%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
+    opacity: 1; /*lo oculto*/
+}
+
 
 
 /* Artículos */
