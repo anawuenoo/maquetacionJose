@@ -24,7 +24,7 @@
     font-style: normal;
 }
 
-/* Iniciamos estilos personalizados */
+/* Iniciamos estilos personalizados  */
 /* Definición Variables
  definimos familia de fuente que voy a utilizar */
 :root{
@@ -42,8 +42,6 @@
     --color-focus: #555;
     --color-tercero:#f3d294;
     --color-fondo:rgb(233,201,160);
-    --color-list-a:#e5d5bc;
-    --color-article:#fee3b9;
 }
 
 /* Estilos Generales */
@@ -57,10 +55,11 @@ html{
 body{
     background: var(--color-fondo);
 }
-
+/* wrap queremos que los elementos "hijos" dispongan de estos estilos */
 .header__wrap, .content__wrap, .footer__wrap{
+    /* le asignamo 1200 para vista de escritorio */
     width: var(--mx-width);
-    margin: 0px auto; 
+    margin: 0px auto; /* centra un elemento */
 }
 
 .logo__gear, .card__icon, .search__icon, .aside-box__icon, .social__icon{
@@ -76,15 +75,11 @@ body{
     color: var(--color-bg);
 }
 
-.header__wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  
 
-  .header__logo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.header__logo{
+    /* display: grid; */
+    /* grid-template-columns: 2fr 1fr 1fr; */
+    float: left;
     width: 200px;
     height: 50px;
     background-color: var(--color-primary);
@@ -94,47 +89,55 @@ body{
     letter-spacing: 1px;
     cursor: pointer;
     overflow: hidden;
-    /*transición*/
-    transition: all 500ms;
-  }
-
-.header__logo h3{
-    font-size: 40px;
-    margin-right: 65px;
     /* transición */
     transition: all 500ms;
 }
 
+.header__logo h3{
+    display: grid;
+    font-size: 40px;
+    margin-right: 65px;
+    /* transición */
+}
+
 /* efecto con keyframes - hover en el Logo */
 .header__logo:hover h3{
-    animation: derecha 2s;
+    animation: mueveDerecha 2s;
 }
-@keyframes derecha {
+@keyframes mueveDerecha {
     from{
         transform: translateX(200%);
     }
 }
 
 /* efecto hover en Logo */
-.header__logo:hover {
-    border-radius: 10px;
-    background-color: var(--color-background);
-   
-  }
+
+
+.header__logo .logo__gear{
+    display: block;
+    float: left;
+    font-size: 30px;
+    margin-top: 4px;
+    margin-left: 26px;
+
+    /* A la hora de crear animación */
+
+}
+
+/* animación logo rueda */
+
+
+/* efecto de desaparece y vuelve keyframes */
+
 
 .header__menu{
-    display: grid;
-    grid-auto-flow: column; 
-    gap: 20px; 
-    justify-content: end; 
-    align-items: center; 
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    float: right;
+    height: 70px;
+    background: transparent;
 }
 .menu__list li{
     font-size: 24px;
-    display: inline-block; 
+    display: inline-block; /* puedo flotar con el float o bien mediante inline-block. Funcionaría igual */
     margin: 0px 20px 0px 20px;
     letter-spacing: 1px;
     line-height: 70px;
@@ -146,105 +149,67 @@ body{
     /* transición */
 }
 /* hover */
-.menu__list li a:hover {
-    color: var(--color-list-a);
-    transform: scale(1.1);
-  }
-  
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    background-color: var(--color-primary); 
-    padding: 10px 0;
-    list-style: none;
-    margin: 0;
-    border-radius: 0px 0px 5px 5px; 
-    z-index: 1;
-    width: 150px; 
-    grid-template-columns: repeat(1, 1fr); 
-}
-
 
 /* Maquetando el Banner */
-.content__banner {
+.content__banner{
     width: 95.5%;
     height: 100px;
-    border: 10px solid var(--color-box-shadow2r-);
-    box-shadow: 0px 0px 2px var(--color-primarys);
-    background: url("../img/libreria.jpeg");
+    border: 10px solid var(--color-text-white);
+    box-shadow: 0px 0px 2px var(--color-gray);
+    background: url("../img/bakbaner.png");
     background-position: -200px -200px;
     margin: 20px auto;
     overflow: hidden;
     /* animación */
-    animation: banner 10s infinite linear;
-  }
-  /* keyframes */
-  @keyframes banner {
-    0% {
-      background-position: 0px 0px;
-    }
-    100% {
-      background-position: -200px -200px;
-    }
-  }
-  .content__banner h1 {
-    display: flex;
-    justify-content: center;
+}
+
+/* keyframes */
+
+.content__banner h1{
+    display: block;
     width: 850px;
     font-family: "BebasNeue";
     color: var(--color-text-white);
     font-size: 45px;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 1px var(--color-box-shadow2);
+    text-shadow: 2px 2px 1px var(--color-bg);
     margin: 10px auto;
     /* animación */
-    animation: titulo 10s linear;
-  }
-  
-  /* keyframes */
-  @keyframes titulo {
-    0% {
-      transform: translateX(-200%) ;
-     
-    }
-    60% {
-      transform: translateX(30%);
-    }
-    100% {
-      transform: translateX(0%) ;
-    }
-  }
+}
+
+/* keyframes */
+
 
 .content__cards{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     justify-content: center; 
-    padding: 20px; 
+    padding: 20px;
 }
 /* Tarjetas */
 .cards__card{
     width: 200px;
     height: 220px;
+    border: 1px solid var(--color-background);
+    box-shadow: 1px 1px 4px var(--color-box-shadow);
     overflow: hidden;
     cursor: pointer;
-    margin: 22px;
-    margin-top: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 15px; 
     background-color: var( --color-tercero);
     /* transicion */
-    transition: all 500ms;
 
 }
 /*efecto hover en las cartas */
 .cards__card:hover {
     transform: scale(1.05); 
-    box-shadow: 4px 4px 10px var(--color-primary); 
+    box-shadow: 4px 4px 10px var(--color-box-shadow); 
 }
 
+.cards__card:last-child{
+    margin-right: 0px;
+}
 
 .cards__card .card__icon{
     display: grid;
@@ -256,23 +221,8 @@ body{
     margin: 0px auto;
 }
 /*efecto hover en la carta modificamos card__icon */
-.cards__card:hover .card__icon {
-    font-size: 70px;
-    color: var(--color-primary);
-    animation: mueveImagen 500ms linear;
-  }
-  /* keyframes */
-  @keyframes mueveImagen {
-    from {
-      transform: translateY(-200%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
 
-
-
+/* keyframes */
 
 .card__category{
     width: 100%;
@@ -281,24 +231,96 @@ body{
     font-size: 21px;
     font-weight: bold;
     text-align: center;
-    
+    color: var(--color-text-title);
     transition: all 500ms;
 }
 /*efecto hover en la carta - modificamos card_category */
-.cards__card:hover .card__category {
-    animation: mcategoria 500ms linear;
-    color: var(--color-primary);
-  }
-  @keyframes mcategoria {
-    from {
-      transform: translateX(-200%);
-    }
-    to {
-      transform: translateX(0%);
-    }
-  }
+
+.card__description{
+    font-family: "TrebuchetMS";
+    text-align: center;
+    color: var(--color-text-title);
+    font-size: 14px;
+    /* transición */
+}
+/* efecto de hover en la carta. tocamos card__description */
+
+/*NUEVO*/
+
+/* .content__cards1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center; 
+    padding: 20px;
+}
+/* Tarjetas *//*
+.cards__card1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 200px;
+    height: 220px;
+    border: 1px solid var(--color-background);
+    box-shadow: 1px 1px 4px var(--color-box-shadow);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 20px; 
+    background-color: var( --color-tercero);
+    /* transicion */
+/*
+}*/
+/*efecto hover en las cartas *//*
+.cards__card1:hover {
+    transform: scale(1.05); 
+    box-shadow: 4px 4px 10px var(--color-box-shadow); 
+}
+
+.cards__card1:last-child{
+    margin-right: 0px;
+}
+
+.cards__card1 .card__icon1{
+    display: ;
+    width: 100%;
+    height: 110px;
+    font-size: 50px;
+    line-height: 90px;
+    text-align: center;
+    margin: 0px auto;
+} */
+/*efecto hover en la carta modificamos card__icon */
+
+/* keyframes */
+
+.card__category1{
+    width: 100%;
+    height: 50px;
+    font-family: "TrebuchetMS";
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-text-title);
+    transition: all 500ms;
+}
+/*efecto hover en la carta - modificamos card_category */
+
+.card__description1{
+    font-family: "TrebuchetMS";
+    text-align: center;
+    color: var(--color-text-title);
+    font-size: 14px;
+    /* transición */
+}
+/* efecto de hover en la carta. tocamos card__description */
 
 
+
+/*FIN DEL NUEVO*/
+.clearfix{
+    float: none;
+    clear: both;
+}
 
 /* Barra lateral */
 .content__lateral{
@@ -313,11 +335,8 @@ body{
     width: auto;
     height: 45px;
     line-height: 49px;
-    background: url("../img/pxvar(--color-gray).png"), var(--color-list-a);
-    box-shadow: 0px 1px 0px var(--color-primary), 
-    1px 2px 0px var(--color-primary), 
-    2px 3px 0px var(--color-primary), 
-    3px 4px 0px var(--color-primary);
+    background: url("../img/pxvar(--color-gray).png"), var(--color-text-white);
+    box-shadow: 0px 1px 0px var(--color-box-shadow2), 1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2), 3px 4px 0px var(--color-box-shadow2);
     font-size: 30px;
     font-family: "BebasNeue";
     font-weight: normal;
@@ -341,7 +360,7 @@ body{
 }
 
 .lateral__search input[type="text"]{
-    width: 85%; 
+    width: 85%; /* para que quepa el botón */
     height: 30px;
     border: none;
     padding-left: 5px;
@@ -349,14 +368,8 @@ body{
     background-color: transparent;
     color: var(--color-backgroung);
     /* transición para el focus */
-    transition: all 300ms;
 }
 /* obtengo foco en input[type="text"] */
-.lateral__search input[type="text"]:focus {
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-  
 
 
 .lateral__search input[type="button"],
@@ -364,8 +377,8 @@ body{
     height: 30px;
     cursor:pointer;
     font-size: 16px;
-    background-color: transparent; 
-    border:none; 
+    background-color: transparent; /* para que no tenga fondo */
+    border:none; /* para que se integre con el campo en sí */
     border-left: 1px solid var(--color-backgroung);
     color: var(--color-focus);
     padding-left: 6px;
@@ -376,8 +389,8 @@ body{
     margin: 0px auto;
     margin-top: 20px;
     padding-top: 2px;
-    background-color: var(--color-list-a);
-    box-shadow: 0px 0px 1px #E9C9A0, 0px 3px 7px #613a08, 0px 1px var(--color-primary) inset, 0px -3px 2px #E9C9A0 inset;
+    background-color: var(--color-text-white);
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.3), 0px 3px 7px rgba(0,0,0,0.3), 0px 1px var(--color-text-white) inset, 0px -3px 2px rgba(0,0,0,0.3) inset;
 }
 
 .lateral__login input[type="email"],
@@ -419,7 +432,7 @@ body{
 .lateral__login input[type="reset"],
 .lateral__login button{
     /* display: block; */
-    /* float: left; */
+    float: left;
     text-align: center;
     width: 100px;
     height: 35px;
@@ -435,14 +448,12 @@ body{
     margin-left: 17px;
     margin-bottom: 20px;
     /* transición */ 
-    transition: all 300ms;
 }
 .lateral__login input[type="submit"]:hover,
 .lateral__login input[type="button"]:hover,
 .lateral__login input[type="reset"]:hover,
 .lateral__login button:hover{
     /* le incluyo una sombra */
-    box-shadow: 2px 2px 15px var(--color-primary);
 }
 
 .lateral__login a{
@@ -454,17 +465,14 @@ body{
 }
 
 /* efecto en el .lateral__login a mediante hover */
-.lateral__login a:hover {
-    text-decoration: underline;
-    color: #f706ff;
-  }
+
 
 .lateral__social{
     height: 220px;
 }
 
 .lateral__social a{
-    display: block; 
+    display: block;
     color: var(--color-bg);
     text-decoration: none;
     font-size: 30px;
@@ -473,42 +481,38 @@ body{
     margin-bottom: 20px;
 }
 
-.lateral__social .social__overlay{    
+.lateral__social .social__overlay{
     display: block;
     height: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
-    text-shadow: 0px 0px 1px var(--color-list-a);
-    border: 3px solid var(--color-list-a);
-    box-shadow: 0px 0px 4px var(--color-list-a);
+    text-shadow: 0px 0px 1px var(--color-backgroung);
+    border: 3px solid var(--color-text-white);
+    box-shadow: 0px 0px 4px var(--color-backgroung);
+    background: #F4F7FE;
     position: absolute;
     padding: 5px;
     margin-left: 70px;
     margin-top: -52px;
     cursor: pointer;
-    transform: translateX(
-      -80%
-    ); 
-    opacity: 0; 
+    transform: translateX(-120%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
+    opacity: 0; /*lo oculto*/
     /* transición el cambio */
-    transition: all 500ms;
+    transition: all 1s;
 
 }
 /* efecto hover sobre el div de lateral__social */
 .lateral__social div:hover .social__overlay{
-    transform: translateX(0%);
-    opacity: 1;
+    transform: translateX(0%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
+    opacity: 1; /*lo oculto*/
 }
 
 
 
 /* Artículos */
 .content__articles{
-    width: 860px;
-    display: grid;
-    grid-template-rows: 1fr;
-    gap: 25px;
+    float: left; /* es necesario flotarlo puesto que he incluido el div clearfix*/
     width: 860px;
 }
 
@@ -516,42 +520,29 @@ body{
     display: block;
     width: 100%;
     height: 75px;
-    line-height: 75px; 
+    line-height: 75px; /* centra el texto */
     text-align: center;
     font-family: "BebasNeue";
     font-size: 40px;
     font-weight: normal;
     letter-spacing: 2px;
-    background: url("../img/pxvar(--color-gray).png"), var(--color-list-a);
-    box-shadow: 0px 1px 0px var(--color-primary), 
-    1px 2px 0px var(--color-primary), 
-    2px 3px 0px var(--color-primary), 
-    3px 4px 0px var(--color-primary);
+    background: url("../img/pxvar(--color-gray).png"), var(--color-text-white);
+    box-shadow: 0px 1px 0px var(--color-box-shadow2), 1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2), 3px 4px 0px var(--color-box-shadow2);
     margin: 0px auto;
     margin-top: 20px;
     margin-bottom: 15px;
 }
-.articles__box{
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.articles__box2{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
 
 .articles__article{
-    border: 1px solid var(--color-tercero);
     width: 98%;
     height: auto;
-    color: var(--color-bg);
-    box-shadow: 1px 1px 2px var(--color-primary);
+    border: 1px solid var(--color-backgroung);
+    margin: 40px auto;
     padding: 10px;
     font-family: "TrebuchetMS";
-    background: var(--color-article);
-  
+    background: var(--color-text-white);
+    color: var(--color-bg);
+    box-shadow: 1px 1px 2px var(--color-box-shadow);
 }
 
 .articles__article h4{
@@ -568,14 +559,15 @@ body{
 }
 
 .article__datos{
-    background-color: var(--color-primary);
-    color: var(--color-bg);
+    float: right;
+    background-color: var(--color-box-shadow2);
+    color: var(--color-text-white);
     height: 30px;
     line-height: 30px;
     margin: -10px;
     padding: 4px;
     font-size: 13px;
-    border-radius: 0px 0px 0px 5px; 
+    border-radius: 0px 0px 0px 5px; /* esquina inferior izq 5px */
 }
 .article__datos span{
     margin: 6px;
@@ -588,7 +580,7 @@ body{
 }
 
 .articles__blog{
-    height: 100px; /*altura*/
+    height: 100px;
     margin-top: 60px;
     line-height: 100px;
     text-align: center;
@@ -603,151 +595,9 @@ body{
     color: var(--color-text-title);
     text-decoration: none;
     /* transición */
-    transition: all 300ms ease-in-out;
 }
 /* efecto de hover sobre articles__blog */
-.articles__blog:hover {
-    background-color: var(--color-bg);
-    border: 10px solid var(--color-primary);
-    border-radius: 240px;
-    box-shadow: 0px 0px 10px var(--color-gray);
-    animation: iluminacion 3s infinite linear;
-  }
-  .articles__blog:hover a {
-    color: var(--color-tercero);
-    text-shadow: 1px 1px 1px var(--color-tercero), 
-        1px 2px 1px var(--color-tercero),
-        1px 3px 1px var(--color-tercero), 
-        1px 4px 1px var(--color-tercero),
-        1px 5px 1px var(--color-tercero), 
-        1px 6px 1px var(--color-tercero);
-  }
 
-  .article__image {
-    width: 10%; /*ancho*/
-    border-radius: 5px; 
-    margin-top: 20px; 
-   
-}
-.article__content {
-    display: flex;
-    align-items: flex-start; 
-    gap: 20px; 
-}
-
-.article__text {
-    flex: 1; 
-    margin-top: 20px;
-}
-
-
-/* Tarjetas EQUIPO  */
-.content__cardsPersona{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    justify-content: center; 
-    padding: 20px; 
-}
-
-.cards__cardPersona{
-    width: 250px;
-    height: 280px;
-    overflow: hidden;
-    cursor: pointer;
-    margin: 22px;
-    margin-top: 40px;
-    border-radius: 15px; 
-    background-color: var( --color-tercero);
-    /* transicion */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-}
-/*efecto hover en las cartas */
-.cards__cardPersona:hover {
-    transform: scale(1.05); 
-    box-shadow: 4px 4px 10px var(--color-primary); 
-}
-
-
-.cards__cardPersona .card__icon{
-    display: grid;
-    width: 100%;
-    height: 110px;
-    font-size: 50px;
-    line-height: 90px;
-    text-align: center;
-    margin: 0px auto;
-}
-/*efecto hover en la carta modificamos card__icon */
-.cards__cardPersona:hover .card__icon {
-    font-size: 70px;
-    color: var(--color-primary);
-    animation: mueveImagen 500ms linear;
-  }
-  /* keyframes */
-  @keyframes mueveImagen {
-    from {
-      transform: translateY(-200%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
-
-.card__categoryPersona{
-    width: 100%;
-    height: 50px;
-    font-family: "TrebuchetMS";
-    font-size: 21px;
-    font-weight: bold;
-    text-align: center;
-    /*Transitions */
-    transition: all 500ms;
-}
-/*efecto hover en la carta - modificamos card_category */
-.cards__cardPersona:hover .card__category {
-    animation: moverCategoria 500ms linear;
-    color: var(--color-primary);
-  }
-
-.card__descripcion{
-    font-family: "TrebuchetMS";
-    text-align: center;
-    color: var(--color-text-title);
-    font-size: 14px;
-    /* transición */
-    transition: all 500ms;
-}
-/* efecto de hover en la carta. tocamos card__description */
-.cards__card:hover .card__descripcion {
-    animation: descripcion 500ms linear;
-    color: rgb(255, 247, 134);
-  }
-/* keyframes */
-@keyframes descripcion {
-    from {
-      transform: translateY(200%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
-
-  .card__title {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    font-family: "BebasNeue";
-    font-size: 30px;
-    color: black;
-    border-radius: 5px;
-    margin-top: 30px;
-    background-color: var(--color-article);
-    height: 50px;
-    letter-spacing: 2px;
-   
-}
 
 /* FOOTER */
 .content__footer{
@@ -756,66 +606,70 @@ body{
     background-color: black;
     color: var(--color-text-white);
     overflow: hidden;
-    margin-top: 50px;
 }
-
-.footer__wrap {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
-    padding: 20px;
+.footer__wrap > div{
+    float: left;
+    width: 25%;
+    height: 370px;
+    margin: 40px;
+    text-align: center;
     color: var(--color-text-white);
     font-family: "TrebuchetMS";
 }
 
-.footer__wrap > div {
-    border-radius: 5px;
-    padding: 20px;
-}
+.content__footer a{
+    text-decoration: none;
+    color: var(--color-primary);
+    /* transición */
 
-.footer__title {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-article);
+}
+.footer__title{
+    display: block;
+    background: url("../img/pxvar(--color-gray).png"), var(--color-text-white);
     height: 50px;
     letter-spacing: 2px;
+    text-align: center;
     font-family: "BebasNeue";
-    font-size: 30px;
+    font-size: 40px;
+    line-height: 55px;
     color: black;
     border-radius: 5px;
     margin-bottom: 15px;
 }
-
-.footer__list {
-    display: grid;
-    gap: 10px; 
-    font-size: 25px;
+.footer__list{
     text-align: left;
+    margin: 20px;
+    font-size: 25px;
 }
-
-.footer__list li {
+.footer__list li{
+    margin-top: 10px;
     padding: 5px;
-    border-bottom: 1px solid var(--color-article);
+    border-bottom: 1px solid var(--color-backgroung);
+}
+.footer__list li a{
+    display: block;
+    height: 40px;
+    /* transición */
+}
+/* efecto de hover sobre cada li */
+
+
+.content__footer iframe{
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 5px solid var(--color-text-white);
+    box-shadow: 0px 0px 5px var(--color-gray);
 }
 
-.footer__list li:hover a {
-    color: var(--color-article);
-    transform: translateX(10%);
+.content__footer img{
+    margin-bottom: 15px;
+}
+.footer__browsers img{
+    width: 45px;
 }
 
-
-.content__footer a {
-    color: var(--color-primary);
-    text-decoration: none;
-    /*Transitions */
-    transition: all 300ms ease-out;
-}
-
-.footer__location iframe{
-    height: 290px;
-    width: 700px;
-}
 /* Animaciones y Transiciones
 - Propiedad Animation
 - Keyframes
