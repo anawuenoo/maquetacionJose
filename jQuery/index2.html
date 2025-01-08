@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <script src="./jquery-3.7.1.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        ('#tecla').keydown(function(event){
+        $('#texto').text( 'La tecla pulsada es:' + event.which);
+        $('#tecla').val('');
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+   
+    <input id="texto"/>
+    <p id="tecla">Se ha pulsado la tecla </p>
+  </body>
+</html>
