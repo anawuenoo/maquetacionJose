@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <script src="./jquery-3.7.1.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#boton").click(function (evento) {
+          var selectorEscrito = $("#camposelector").val();
+
+          if (selectorEscrito == "") {
+            alert("Escribe algo en el campo de texto");
+          } else {
+            elementosSeleccionados = $(selectorEscrito);
+
+            elementosSeleccionados.fadeOut("slow", function(){
+              elementosSeleccionados.fadeIn("slow");
+            });
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Selectores en jQuery</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum nulla distinctio aliquid sunt neque facere odit sapiente amet, perspiciatis fugiat! Odio quidem repellendus illo atque totam odit fugiat, ducimus dignissimos.</p>
+    <input id="boton" value="Azul" type="button" />
+  </body>
+</html>
+
+
+
+
+
+
+
+

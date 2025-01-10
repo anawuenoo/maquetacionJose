@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <script src="./jquery-3.7.1.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#texto").each(function (){
+        alert($(this).val());
+       });
+      });
+    </script>
+  </head>
+  <body>
+    
+    <input id="texto"> 
+    <br>
+    <br>
+    
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    
+  </body>
+</html>
