@@ -27,8 +27,14 @@ un botón.
       .animado{
         background-color: rgb(102, 226, 248);
       }
+      .animate{
+          left: 100;
+          top: 200;
+        }
+        
     </style>
     <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./jquery-ui.min.js"></script>
     <script>
       window.onload = function () {
         $(document).ready(function () {
@@ -66,7 +72,10 @@ un botón.
 
         //Ejercicio8
         $("#drch").on("click",function(){
-            $("#ejer8").hide("slide",{direction:"rigth"},"slow");   
+            $("#ejer8").hide("drop",{direction:"rigth"},"slow");   
+        });
+        $("#izq").on("click",function(){
+            $("#ejer8").show("drop",{direction:"rigth"},"slow");   
         });
         
         
@@ -74,6 +83,10 @@ un botón.
         $("#toggle").click(function(){
             $("#ejer9").toggle();
         });
+
+        //Ejercicio10
+      
+        
       });
       }
     </script>
@@ -132,6 +145,7 @@ un botón.
     <br/>
     <br/>
     <p id="ejer8">Ejercicio 8</p>
+    <button id="izq">Izquierda</button>
     <button id="drch">Derecha</button>
     <!-- Ejercicio9 -->
     <br/>
@@ -139,5 +153,13 @@ un botón.
     <br/>
     <p id="ejer9">Ejercicio 9</p>
     <button id="toggle">Botón</button>
+    <!-- Ejercicio10 -->
+    <br/>
+    <br/>
+    <br/>
+    <div id="animate">
+      <p id="ejer10">Ejercicio 10</p>
+      <button id="despla">Botón</button>
+    </div>
   </body>
 </html>
