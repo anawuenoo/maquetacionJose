@@ -1,0 +1,424 @@
+<html lang="es">
+  <!-- 
+2. Ejercicios con jQuery UI: Widgets
+1-Crea un diálogo con un mensaje de bienvenida usando el widget dialog de jQuery UI.
+2-Haz que un <input> se transforme en un campo de fecha utilizando el widget datepicker.
+3-Aplica un tooltip a un elemento con el texto "Haz clic aquí".
+4-Convierte un menú de lista <ul> en un menú desplegable utilizando menu.
+5-Convierte una lista de elementos en una lista interactiva de ordenación utilizando el widget sortable.
+6-Convierte un <input> en un campo numérico con el widget spinner.
+7-Usa el widget progressbar para mostrar el progreso de una acción (por ejemplo, una carga de archivo).
+8-Usa el widget autocomplete para sugerir opciones mientras el usuario escribe en un campo de texto.
+9-Crea un cuadro de selección múltiple usando selectmenu.
+10- Aplica un accordion a una lista de elementos <h3> y <div>.-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicios DOM Básicos</title>
+    <style type="text/css"></style>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./jquery-ui-1.14.1.custom/jquery-ui.js"></script>
+    <style>
+      label {
+        display: inline-block;
+        width: 5em;
+      }
+
+      .ui-menu {
+        width: 150px;
+      }
+
+      #sortable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+      }
+      #sortable li {
+        margin: 0 3px 3px 3px;
+        padding: 0.4em;
+        padding-left: 1.5em;
+        font-size: 1.4em;
+        height: 18px;
+      }
+      #sortable li span {
+        position: absolute;
+        margin-left: -1.3em;
+      }
+
+      fieldset {
+        border: 0;
+      }
+      label {
+        display: block;
+        margin: 30px 0 0 0;
+      }
+      .overflow {
+        height: 200px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        $(document).ready(function () {
+          // Ejercicio 1
+          $("#dialog").dialog();
+          //Ejercicio 2
+          $("#datepicker").datepicker();
+          //Ejercicio 4
+          $("#menu").menu();
+          //Ejercicio 5
+          $("#sortable").sortable();
+          //Ejercicio 10
+          $( "#accordion" ).accordion();
+        });
+        //Ejercicio 3
+        $(function () {
+          $(document).tooltip();
+        });
+      };
+
+      //Ejercicio 6
+      $(function () {
+        var spinner = $("#spinner").spinner();
+
+        $("#disable").on("click", function () {
+          if (spinner.spinner("option", "disabled")) {
+            spinner.spinner("enable");
+          } else {
+            spinner.spinner("disable");
+          }
+        });
+        $("#destroy").on("click", function () {
+          if (spinner.spinner("instance")) {
+            spinner.spinner("destroy");
+          } else {
+            spinner.spinner();
+          }
+        });
+        $("#getvalue").on("click", function () {
+          alert(spinner.spinner("value"));
+        });
+        $("#setvalue").on("click", function () {
+          spinner.spinner("value", 5);
+        });
+
+        $("button").button();
+      });
+
+      //Ejercicio 7
+      $(function () {
+        $("#progressbar").progressbar({
+          value: 37,
+        });
+      });
+
+      //Ejercicio 8
+      $(function () {
+        var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme",
+        ];
+        $("#tags").autocomplete({
+          source: availableTags,
+        });
+      });
+      //Ejercicio 9
+      $(function () {
+        $("#speed").selectmenu();
+
+        $("#files").selectmenu();
+
+        $("#number").selectmenu().selectmenu("menuWidget").addClass("overflow");
+
+        $("#salutation").selectmenu();
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Ejercicio 1 -->
+    <!-- <div id="dialog" title="Ventana Emergente">
+        <p>Pruebaaaaaaaaa</p>
+    </div> -->
+    <!-- Ejercicio 2 -->
+    <h1>Ejercicio 2</h1>
+    <p>Fecha: <input type="text" id="datepicker" /></p>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 3 -->
+    <h1>Ejercicio 3</h1>
+    <p>
+      <a href="#" title="That's what this widget is">Tooltips</a> can be
+      attached to any element. When you hover the element with your mouse, the
+      title attribute is displayed in a little box next to the element, just
+      like a native tooltip.
+    </p>
+    <p>
+      But as it's not a native tooltip, it can be styled. Any themes built with
+      <a
+        href="https://jqueryui.com/themeroller/"
+        title="ThemeRoller: jQuery UI's theme builder application"
+        >ThemeRoller</a
+      >
+      will also style tooltips accordingly.
+    </p>
+    <p>
+      Tooltips are also useful for form elements, to show some additional
+      information in the context of each field.
+    </p>
+    <p>
+      <label for="age">Your age:</label
+      ><input
+        id="age"
+        title="We ask for your age only for statistical purposes."
+      />
+    </p>
+    <p>Hover the field to see the tooltip.</p>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 4 -->
+    <h1>Ejercicio 4</h1>
+    <ul id="menu">
+      <li class="ui-state-disabled"><div>Toys (n/a)</div></li>
+      <li><div>Books</div></li>
+      <li><div>Clothing</div></li>
+      <li>
+        <div>Electronics</div>
+        <ul>
+          <li class="ui-state-disabled"><div>Home Entertainment</div></li>
+          <li><div>Car Hifi</div></li>
+          <li><div>Utilities</div></li>
+        </ul>
+      </li>
+      <li><div>Movies</div></li>
+      <li>
+        <div>Music</div>
+        <ul>
+          <li>
+            <div>Rock</div>
+            <ul>
+              <li><div>Alternative</div></li>
+              <li><div>Classic</div></li>
+            </ul>
+          </li>
+          <li>
+            <div>Jazz</div>
+            <ul>
+              <li><div>Freejazz</div></li>
+              <li><div>Big Band</div></li>
+              <li><div>Modern</div></li>
+            </ul>
+          </li>
+          <li><div>Pop</div></li>
+        </ul>
+      </li>
+      <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
+    </ul>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 5 -->
+    <h1>Ejercicio 5</h1>
+    <ul id="sortable">
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1
+      </li>
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2
+      </li>
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3
+      </li>
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4
+      </li>
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5
+      </li>
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6
+      </li>
+      <li class="ui-state-default">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7
+      </li>
+    </ul>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 6 -->
+    <h1>Ejercicio 6</h1>
+    <p>
+      <label for="spinner">Select a value:</label>
+      <input id="spinner" name="value" />
+    </p>
+
+    <p>
+      <button id="disable">Toggle disable/enable</button>
+      <button id="destroy">Toggle widget</button>
+    </p>
+
+    <p>
+      <button id="getvalue">Get value</button>
+      <button id="setvalue">Set value to 5</button>
+    </p>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 7 -->
+    <h1>Ejercicio 7</h1>
+    <div id="progressbar"></div>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 8 -->
+    <h1>Ejercicio 8</h1>
+    <div class="ui-widget">
+      <label for="tags">Tags: </label>
+      <input id="tags" />
+    </div>
+    <br />
+    <br />
+    <br />
+    <!-- Ejercicio 9 -->
+    <h1>Ejercicio 9</h1>
+    <div class="demo">
+      <form action="#">
+        <fieldset>
+          <label for="speed">Select a speed</label>
+          <select name="speed" id="speed">
+            <option>Slower</option>
+            <option>Slow</option>
+            <option selected="selected">Medium</option>
+            <option>Fast</option>
+            <option>Faster</option>
+          </select>
+
+          <label for="files">Select a file</label>
+          <select name="files" id="files">
+            <optgroup label="Scripts">
+              <option value="jquery">jQuery.js</option>
+              <option value="jqueryui">ui.jQuery.js</option>
+            </optgroup>
+            <optgroup label="Other files">
+              <option value="somefile">Some unknown file</option>
+              <option value="someotherfile">
+                Some other file with a very long option text
+              </option>
+            </optgroup>
+          </select>
+
+          <label for="number">Select a number</label>
+          <select name="number" id="number">
+            <option>1</option>
+            <option selected="selected">2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+          </select>
+
+          <label for="salutation">Select a title</label>
+          <select name="salutation" id="salutation">
+            <option disabled="" selected="">Please pick one</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Dr.</option>
+            <option>Prof.</option>
+            <option>Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- Ejercicio 10 -->
+    <div id="accordion">
+        <h3>Section 1</h3>
+        <div>
+          <p>
+          Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+          ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+          amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+          odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+          </p>
+        </div>
+        <h3>Section 2</h3>
+        <div>
+          <p>
+          Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+          purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+          velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+          suscipit faucibus urna.
+          </p>
+        </div>
+        <h3>Section 3</h3>
+        <div>
+          <p>
+          Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+          Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+          ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+          lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+          </p>
+          <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+          </ul>
+        </div>
+        <h3>Section 4</h3>
+        <div>
+          <p>
+          Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+          et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+          mauris vel est.
+          </p>
+          <p>
+          Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+          Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+          inceptos himenaeos.
+          </p>
+        </div>
+      </div>
+  </body>
+</html>

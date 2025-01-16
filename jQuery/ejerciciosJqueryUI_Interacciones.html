@@ -1,0 +1,88 @@
+<html lang="es">
+  <!-- 
+3. Ejercicios con jQuery UI: Interacciones
+1-Crea un efecto de arrastrar y soltar (draggable y droppable) entre dos elementos.
+2-Haz que un <div> sea redimensionable utilizando el widget resizable.
+3-Haz que un elemento sea resizable solo horizontalmente.
+4-Haz que un <div> sea resizable solo verticalmente.
+5-Usa el widget selectable para permitir seleccionar varios elementos de una lista.
+6-Haz que un elemento sea arrastrable y también resizable al mismo tiempo.
+7-Convierte un elemento en un área de arrastre con el widget draggable.
+8-Convierte un contenedor en un área de soltado con el widget droppable.
+9-Usa el widget draggable y droppable para crear un juego de tipo "arrastra y coloca".
+10-Haz que un elemento se desplace hacia una posición específica cuando se hace clic, usando el widget draggable.
+-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicios DOM Básicos</title>
+    <style type="text/css"></style>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./jquery-ui-1.14.1.custom/jquery-ui.js"></script>
+    <style>
+      #draggable {
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px 10px 10px 0;
+        background-color: aqua;
+        text-align: center;
+      }
+      #droppable {
+        width: 150px;
+        height: 150px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px;
+      }
+      #resizable {
+        width: 150px;
+        height: 150px;
+        padding: 0.5em;
+      }
+      #resizable h3 {
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        $(document).ready(function () {
+          //Ejercicio 1
+          $("#draggable").draggable();
+          $("#droppable").droppable({
+            drop: function (event, ui) {
+              $(this)
+                .addClass("ui-state-highlight")
+                .find("p")
+                .html("Soltadoo!");
+            },
+          });
+          //Ejercicio 2
+          $( "#resizable" ).resizable();
+        });
+      };
+    </script>
+  </head>
+
+  <body>
+    <!-- Ejercicio 1 -->
+    <!-- <div id="draggable" class="ui-widget-content">
+      <p>Mueveme a la otra caja</p>
+    </div>
+
+    <div id="droppable" class="ui-widget-header">
+      <p>Suelta aquí</p>
+    </div> -->
+
+    <!-- Ejercicio 2 -->
+    <div id="resizable" class="ui-widget-content">
+        <h3 class="ui-widget-header">Resizable</h3>
+      </div>
+  </body>
+</html>
