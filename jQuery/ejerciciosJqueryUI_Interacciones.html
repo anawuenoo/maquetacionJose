@@ -1,5 +1,5 @@
 <html lang="es">
-  <!-- 
+<!-- 
 3. Ejercicios con jQuery UI: Interacciones
 1-Crea un efecto de arrastrar y soltar (draggable y droppable) entre dos elementos.
 2-Haz que un <div> sea redimensionable utilizando el widget resizable.
@@ -12,67 +12,222 @@
 9-Usa el widget draggable y droppable para crear un juego de tipo "arrastra y coloca".
 10-Haz que un elemento se desplace hacia una posición específica cuando se hace clic, usando el widget draggable.
 -->
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ejercicios DOM Básicos</title>
-    <style type="text/css"></style>
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
-    />
-    <link rel="stylesheet" href="/resources/demos/style.css" />
-    <script src="./jquery-3.7.1.min.js"></script>
-    <script src="./jquery-ui-1.14.1.custom/jquery-ui.js"></script>
-    <style>
-      #draggable {
-        width: 100px;
-        height: 100px;
-        padding: 0.5em;
-        float: left;
-        margin: 10px 10px 10px 0;
-        background-color: aqua;
-        text-align: center;
-      }
-      #droppable {
-        width: 150px;
-        height: 150px;
-        padding: 0.5em;
-        float: left;
-        margin: 10px;
-      }
-      #resizable {
-        width: 150px;
-        height: 150px;
-        padding: 0.5em;
-      }
-      #resizable h3 {
-        text-align: center;
-        margin: 0;
-      }
-    </style>
-    <script>
-      window.onload = function () {
-        $(document).ready(function () {
-          //Ejercicio 1
-          $("#draggable").draggable();
-          $("#droppable").droppable({
-            drop: function (event, ui) {
-              $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("Soltadoo!");
-            },
-          });
-          //Ejercicio 2
-          $( "#resizable" ).resizable();
-        });
-      };
-    </script>
-  </head>
 
-  <body>
-    <!-- Ejercicio 1 -->
-    <!-- <div id="draggable" class="ui-widget-content">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ejercicios Jquery</title>
+  <style type="text/css"></style>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script src="./jquery-3.7.1.min.js"></script>
+  <script src="./jquery-ui-1.14.1.custom/jquery-ui.js"></script>
+  <style>
+    #draggable {
+      width: 100px;
+      height: 100px;
+      padding: 0.5em;
+      float: left;
+      margin: 10px 10px 10px 0;
+      background-color: aqua;
+      text-align: center;
+    }
+
+    #droppable {
+      width: 150px;
+      height: 150px;
+      padding: 0.5em;
+      float: left;
+      margin: 10px;
+    }
+
+    #resizable {
+      width: 150px;
+      height: 150px;
+      padding: 0.5em;
+    }
+
+    #resizable h3 {
+      text-align: center;
+      margin: 0;
+    }
+
+    #cajaInteractiva {
+      width: 150px;
+      height: 150px;
+      background-color: lightcoral;
+      text-align: center;
+      line-height: 150px;
+      color: white;
+      font-weight: bold;
+      cursor: move;
+      /* Indica que se puede mover */
+    }
+
+    #areaArrastre {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 200px;
+      border: 2px dashed #007bff;
+      cursor: move;
+      /* Indica que se puede arrastrar */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #areaSoltado {
+      width: 300px;
+      height: 300px;
+      background-color: lightgreen;
+      border: 2px dashed #007bff;
+      text-align: center;
+      line-height: 300px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    #elementoArrastrable {
+      width: 100px;
+      height: 100px;
+      background-color: lightcoral;
+      text-align: center;
+      line-height: 100px;
+      color: white;
+      font-weight: bold;
+      cursor: move;
+    }
+
+    /* Estilo cuando el elemento es soltado correctamente */
+    .ui-state-highlight {
+      background-color: lightyellow;
+      border-color: green;
+    }
+
+    .arrastrable {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 100px;
+      cursor: move;
+      font-size: 18px;
+      color: white;
+      margin: 10px;
+    }
+
+    .soltado {
+      width: 120px;
+      height: 120px;
+      background-color: lightgray;
+      text-align: center;
+      line-height: 120px;
+      margin: 10px;
+      font-size: 18px;
+      border: 2px dashed #007bff;
+    }
+
+    /* Estilo cuando el elemento es colocado correctamente */
+    .correcto {
+      background-color: lightgreen;
+      border-color: green;
+      color: white;
+      font-weight: bold;
+    }
+
+    #elementoMovible {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 100px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      $(document).ready(function () {
+        //Ejercicio 1
+        $("#draggable").draggable();
+        $("#droppable").droppable({
+          drop: function (event, ui) {
+            $(this)
+              .addClass("ui-state-highlight")
+              .find("p")
+              .html("Soltadoo!");
+          },
+        });
+        //Ejercicio 2
+        $("#resizable").resizable();
+
+        //Ejericicio 3 
+        $("#miElemento").resizable({
+          handles: "e, w"
+        });
+
+        //Ejercicio 4
+        $("#cajaResizable").resizable({
+          handles: "n, s" // Permite redimensionar solo en los lados superior e inferior
+        });
+
+        //Ejercicio 5
+        $("#miLista").selectable();
+
+        //Ejercicio 6
+        $("#cajaInteractiva").draggable().resizable();
+
+        //Ejercicio 7
+        $("#areaArrastre").draggable();
+
+        //Ejercicio 8
+        $("#areaSoltado").droppable({
+          drop: function (event, ui) {
+            $(this).addClass("ui-state-highlight").html("¡Elemento soltado!");
+          }
+        });
+
+        // Convertir el elemento en arrastrable
+        $("#elementoArrastrable").draggable();
+
+        //Ejercicio 9
+        $(".arrastrable").draggable();
+
+        // Convertir las áreas en contenedores de soltado
+        $(".soltado").droppable({
+          drop: function (event, ui) {
+            var itemId = ui.helper.attr("id"); // Obtener el ID del elemento arrastrado
+            if (itemId === $(this).attr("id")) {
+              $(this).addClass("correcto");
+              $(this).html("¡Correcto!");
+            } else {
+              $(this).html("¡Intenta de nuevo!");
+            }
+          }
+        });
+
+        //Ejercicio 10
+        $("#elementoMovible").draggable();
+
+        // Al hacer clic, movemos el elemento a una posición específica
+        $("#elementoMovible").click(function () {
+          $(this).animate({
+            left: '300px', // Posición horizontal (desde el borde izquierdo)
+            top: '200px'  // Posición vertical (desde el borde superior)
+          }, 500); // La animación dura 500ms
+        });
+
+      });
+
+    };
+  </script>
+</head>
+
+<body>
+  <!-- Ejercicio 1 -->
+  <!-- <div id="draggable" class="ui-widget-content">
       <p>Mueveme a la otra caja</p>
     </div>
 
@@ -80,9 +235,77 @@
       <p>Suelta aquí</p>
     </div> -->
 
-    <!-- Ejercicio 2 -->
-    <div id="resizable" class="ui-widget-content">
-        <h3 class="ui-widget-header">Resizable</h3>
-      </div>
-  </body>
+  <!-- Ejercicio 2 -->
+  <div id="resizable" class="ui-widget-content">
+    <h3 class="ui-widget-header">Resizable</h3>
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio 3 -->
+  <div id="miElemento" style="width: 200px; height: 100px; background-color: lightblue;">
+    Arrástrame horizontalmente
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio 4 -->
+  <div id="cajaResizable" style="width: 250px; height: 150px; background-color: lightgreen;">
+    Arrástrame verticalmente
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio 5 -->
+  <ul id="miLista" style="width: 300px; list-style: none; padding: 0; border: 1px solid #ccc;">
+    <li class="ui-widget-content" style="padding: 10px; margin: 5px; border: 1px solid #ddd;">Elemento 1</li>
+    <li class="ui-widget-content" style="padding: 10px; margin: 5px; border: 1px solid #ddd;">Elemento 2</li>
+    <li class="ui-widget-content" style="padding: 10px; margin: 5px; border: 1px solid #ddd;">Elemento 3</li>
+    <li class="ui-widget-content" style="padding: 10px; margin: 5px; border: 1px solid #ddd;">Elemento 4</li>
+    <li class="ui-widget-content" style="padding: 10px; margin: 5px; border: 1px solid #ddd;">Elemento 5</li>
+  </ul>
+  <br>
+  <br>
+  <!-- Ejercicio 6 -->
+  <div id="cajaInteractiva">
+    Arrástrame y redimensióname
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio  7 -->
+  <div id="areaArrastre">
+    Arrástrame
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio 8 -->
+  <div id="areaSoltado">
+    Suelta aquí
+  </div>
+
+  <br>
+
+  <!-- Elemento arrastrable -->
+  <div id="elementoArrastrable">
+    Arrástrame
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio 9 -->
+  <div id="contenedor">
+    <!-- Elementos a arrastrar -->
+    <div id="item1" class="arrastrable">Figura 1</div>
+    <div id="item2" class="arrastrable">Figura 2</div>
+    <div id="item3" class="arrastrable">Figura 3</div>
+
+    <br>
+
+    <!-- Áreas de soltado -->
+    <div id="item1_area" class="soltado">Área 1</div>
+    <div id="item2_area" class="soltado">Área 2</div>
+    <div id="item3_area" class="soltado">Área 3</div>
+  </div>
+  <br>
+  <br>
+  <!-- Ejercicio 10 -->
+  <div id="elementoMovible">Haz clic en mí</div>
+</body>
+
 </html>
